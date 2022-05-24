@@ -9,7 +9,10 @@ const Header = () => {
       <div className="contenedor">
         <div className={styles.barra}>
           <Link href="/">
-            <Image src="/img/logo.svg" width={400} height={100} alt="img" />
+            <a>
+              {" "}
+              <Image src="/img/logo.svg" width={400} height={100} alt="img" />
+            </a>
           </Link>
 
           <nav className={styles.navegacion}>
