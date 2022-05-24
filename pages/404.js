@@ -5,7 +5,7 @@ import styles from "../styles/NoFound.module.css";
 const NoFound = () => {
   return (
       <div className={styles.no_found}>
-        <h1 className="heading">Pagina no encontrada - Error 404</h1>
+        <h1 className="heading">Página no encontrada - Error 404</h1>
         <Link href="/">Volver al Inicio</Link>
       </div>
   );

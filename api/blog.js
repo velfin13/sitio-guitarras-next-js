@@ -21,3 +21,15 @@ export const getBlogById = async (id) => {
     return error;
   }
 };
+
+export const getBlogByUrl = async (url) => {
+  try {
+    const urlpath = `${process.env.NEXT_PUBLIC_BASE_URL_API}/blogs?url=${url}`;
+    const respuesta = await fetch(urlpath);
+
+    const resultado = await respuesta.json();
+    return resultado;
+  } catch (error) {
+    return error;
+  }
+};

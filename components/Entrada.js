@@ -3,7 +3,7 @@ import Image from "next/image";
 import { formatearFecha } from "../helpers";
 import styles from "../styles/Entrada.module.css";
 const Entrada = ({ entrada }) => {
-  const { title, contenido, resumen, imagen, published_at, id } = entrada;
+  const { title, resumen, imagen, published_at, id, url } = entrada;
   return (
     <article>
       <Image
@@ -18,7 +18,7 @@ const Entrada = ({ entrada }) => {
         <h3>{title}</h3>
         <p className={styles.fecha}>{formatearFecha(published_at)}</p>
         <p className={styles.resumen}>{resumen}</p>
-        <Link href={`blog/${id}`}>
+        <Link href={`blog/${url}`}>
           <a className={styles.enlace}>Leer más..</a>
         </Link>
       </div>

@@ -1,13 +1,14 @@
 import Layout from "../../components/Layout";
 import Image from "next/image";
-import { getBlogById } from "../../api/blog";
-import { formatearFecha } from ".././../helpers";
+import { getBlogByUrl } from "../../api/blog";
+import { formatearFecha } from "../../helpers";
 import styles from "../../styles/Entrada.module.css";
 
 const EntradaBlog = ({ entrada }) => {
-  const { contenido, title, published_at, imagen } = entrada;
+  const { title, contenido, published_at, imagen } = entrada[0];
+
   return (
-    <Layout>
+    <Layout titlePage={title}>
       <main className="contenedor">
         <h3 className="heading">{title}</h3>
         <article className={styles.entrada}>
@@ -29,10 +30,10 @@ const EntradaBlog = ({ entrada }) => {
   );
 };
 
-export async function getServerSideProps({ query: { id } }) {
-  const entrada = await getBlogById(id);
+export async function getServerSideProps({ query: { url } }) {
+  const entrada = (await getBlogByUrl(url)) ?? [];
   return {
-    props: { entrada },
+    props: { entrada: entrada },
   };
 }
 
