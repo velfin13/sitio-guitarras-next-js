@@ -1,6 +1,6 @@
 export const getBlogs = async () => {
   try {
-    const url = `${process.env.NEXT_PUBLIC_BASE_URL_API}/blogs`;
+    const url = `${process.env.NEXT_PUBLIC_BASE_URL_API}/blogs?_sort=createdAt:DESC`;
     const respuesta = await fetch(url);
 
     const resultado = await respuesta.json();
