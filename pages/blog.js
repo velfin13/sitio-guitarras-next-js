@@ -2,18 +2,14 @@ import { useEffect, useState } from "react";
 import Layout from "../components/Layout";
 import { getBlogs } from "../api/blog";
 import Entrada from "../components/Entrada";
-import styles from '../styles/Blog.module.css'
+import styles from "../styles/Blog.module.css";
+import ListadoBlog from "../components/ListadoBlog";
 
 const Blog = ({ entradas = [] }) => {
   return (
     <Layout titlePage="Blog">
       <main className="contenedor">
-        <h2 className="heading">Blog</h2>
-        <div className={styles.blog}>
-          {entradas.map((entrada) => (
-            <Entrada key={entrada.id} entrada={entrada} />
-          ))}
-        </div>
+        <ListadoBlog entradas={entradas} />
       </main>
     </Layout>
   );

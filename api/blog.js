@@ -10,6 +10,18 @@ export const getBlogs = async () => {
   }
 };
 
+export const getBlogsLimit = async (limit) => {
+  try {
+    const url = `${process.env.NEXT_PUBLIC_BASE_URL_API}/blogs?_limit=${limit}&_sort=createdAt:DESC`;
+    const respuesta = await fetch(url);
+
+    const resultado = await respuesta.json();
+    return resultado;
+  } catch (error) {
+    return error;
+  }
+};
+
 export const getBlogById = async (id) => {
   try {
     const url = `${process.env.NEXT_PUBLIC_BASE_URL_API}/blogs/${id}`;
