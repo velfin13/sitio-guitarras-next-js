@@ -7,7 +7,10 @@ import styles from "../../styles/Guitarra.module.css";
 
 const GuitarrasPage = ({ guitarra = [] }) => {
   const { description, price, name, imagen } = guitarra[0];
-  console.log(description);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert("enviando..");
+  };
 
   return (
     <Layout titlePage={name}>
@@ -24,9 +27,22 @@ const GuitarrasPage = ({ guitarra = [] }) => {
           <h3>{name}</h3>
           <p className={styles.description}>{description}</p>
           <p className={styles.precio}>{formatCantidadToMoneda(price)}</p>
-          {/* <Link href={`/guitarras/${url}`}>
-          <a className={styles.enlace}>Ver más ...</a>
-        </Link> */}
+
+          <form onSubmit={handleSubmit} className={styles.formulario}>
+            <label>Cantidad</label>
+            <select>
+              <option value="">--- Seleccione ---</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+            </select>
+            <input value="Agregar al carrito" type="submit" />
+          </form>
         </div>
       </div>
     </Layout>
