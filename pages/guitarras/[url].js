@@ -50,7 +50,7 @@ const GuitarrasPage = ({ guitarra = [] }) => {
 };
 
 export async function getServerSideProps({ query: { url } }) {
-  const guitarra = await getGuitarraByURL(url);
+  const guitarra = (await getGuitarraByURL(url)) ?? [];
   return {
     props: { guitarra },
   };
