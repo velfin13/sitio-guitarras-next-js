@@ -3,7 +3,7 @@ import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-const Layout = ({ children, titlePage }) => {
+const Layout = ({ children, titlePage, guitarra }) => {
   return (
     <div>
       <Head>
@@ -12,13 +12,17 @@ const Layout = ({ children, titlePage }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header />
+      <Header guitarra={guitarra} />
 
       {children}
 
       <Footer />
     </div>
   );
+};
+
+Layout.defaultProps = {
+  guitarra: null,
 };
 
 export default Layout;

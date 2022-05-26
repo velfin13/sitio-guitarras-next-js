@@ -8,9 +8,8 @@ import { getBlogsLimit } from "../api/blog";
 import ListadoBlog from "../components/ListadoBlog";
 
 export default function Home({ guitarras, curso, blogs }) {
-  console.log(blogs);
   return (
-    <Layout titlePage="Inicio">
+    <Layout titlePage="Inicio" guitarra={guitarras[1]}>
       <main className="contenedor">
         <h1 className="heading">Nuestra coleccion</h1>
         <Listado guitarras={guitarras} />
