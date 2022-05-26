@@ -6,7 +6,7 @@ function MyApp({ Component, pageProps }) {
   const [carrito, setCarrito] = useState([]);
 
   useEffect(() => {
-    const carritoLS = JSON.parse(localStorage.getItem(" ")) ?? [];
+    const carritoLS = JSON.parse(localStorage.getItem("carrito")) ?? [];
     setCarrito(carritoLS);
   }, []);
 

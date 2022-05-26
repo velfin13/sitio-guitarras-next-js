@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import Layout from "../components/Layout";
 import { getBlogs } from "../api/blog";
 import Entrada from "../components/Entrada";
