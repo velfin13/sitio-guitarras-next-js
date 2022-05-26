@@ -14,13 +14,14 @@
 .barra {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  height: 80px;
 }
 
 @media (min-width: 768px) {
   .barra {
     flex-direction: row;
     justify-content: space-between;
+  align-items: center;
   }
 }
 
@@ -33,6 +34,7 @@
 @media (min-width: 768px) {
   .navegacion {
     margin-top: 0;
+    align-items: center;
   }
 }
 

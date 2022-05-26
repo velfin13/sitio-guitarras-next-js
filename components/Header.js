@@ -13,7 +13,6 @@ const Header = ({ guitarra }) => {
         <div className={styles.barra}>
           <Link href="/">
             <a>
-              {" "}
               <Image src="/img/logo.svg" width={400} height={100} alt="img" />
             </a>
           </Link>
@@ -23,6 +22,11 @@ const Header = ({ guitarra }) => {
             <Link href="/nosotros">Nosotros</Link>
             <Link href="/blog">Blog</Link>
             <Link href="/tienda">Tienda</Link>
+            <Link href="/carrito">
+              <a>
+                <Image src="/img/carrito.png" width={30} height={20} alt="imagen"/>
+              </a>
+            </Link>
           </nav>
         </div>
         {guitarra && (
@@ -40,7 +44,11 @@ const Header = ({ guitarra }) => {
       </div>
       {router.pathname === "/" && (
         // eslint-disable-next-line @next/next/no-img-element
-        <img className={styles.guitarra} src="/img/header_guitarra.png" alt="img" />
+        <img
+          className={styles.guitarra}
+          src="/img/header_guitarra.png"
+          alt="img"
+        />
       )}
     </header>
   );

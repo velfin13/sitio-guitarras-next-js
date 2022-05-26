@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Image from "next/image";
 import { formatCantidadToMoneda } from "../../helpers";
 import Layout from "../../components/Layout";
@@ -5,11 +6,24 @@ import { getGuitarraByURL } from "../../api/tienda";
 
 import styles from "../../styles/Guitarra.module.css";
 
-const GuitarrasPage = ({ guitarra = [] }) => {
-  const { description, price, name, imagen } = guitarra[0];
+const GuitarrasPage = ({ guitarra = [], addCarrito }) => {
+  const [cantidad, setCantidad] = useState(1);
+  const { description, price, name, imagen, id } = guitarra[0];
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("enviando..");
+    if (cantidad > 0) {
+      const guitarraSeleccionada = {
+        id,
+        name,
+        imagen: imagen.url,
+        price,
+        cantidad,
+      };
+      addCarrito(guitarraSeleccionada);
+    } else {
+      alert("No has seleccionado una cantidad");
+    }
   };
 
   return (
@@ -30,8 +44,11 @@ const GuitarrasPage = ({ guitarra = [] }) => {
 
           <form onSubmit={handleSubmit} className={styles.formulario}>
             <label>Cantidad</label>
-            <select>
-              <option value="">--- Seleccione ---</option>
+            <select
+              value={cantidad}
+              onChange={(e) => setCantidad(parseInt(e.target.value))}
+            >
+              <option value="0">--- Seleccione ---</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
