@@ -2,7 +2,6 @@ import Layout from "../components/Layout";
 import styles from "../styles/Carrito.module.css";
 
 const carrito = ({carrito}) => {
-  console.log(carrito);
   return (
     <Layout titlePage="carrito de compras">
       <h1 className="heading">Carrito</h1>
