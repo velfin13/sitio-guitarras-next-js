@@ -16,7 +16,7 @@ const GuitarrasPage = ({ guitarra = [], addCarrito }) => {
       const guitarraSeleccionada = {
         id,
         name,
-        imagen: imagen.url,
+        imagen: imagen[0].url,
         price,
         cantidad,
       };
