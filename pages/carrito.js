@@ -1,15 +1,30 @@
+import { useState, useEffect } from "react";
 import Layout from "../components/Layout";
 import Image from "next/image";
 import styles from "../styles/Carrito.module.css";
 import { formatCantidadToMoneda } from "../helpers";
 
 const carrito = ({ carrito = [], actualizarCantidad, handleDelete }) => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [total, setTotal] = useState(0);
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  useEffect(() => {
+    const calculoTotal = carrito.reduce(
+      (total, producto) => total + producto.cantidad * producto.price,
+      0
+    );
+    setTotal(calculoTotal);
+  }, [carrito]);
+
+
   return (
     <Layout titlePage="carrito de compras">
       <h1 className="heading">Carrito</h1>
 
       <main className={`contenedor ${styles.contenido}`}>
         <div className={styles.carrito}>
+          <h2>Articulos</h2>
           {carrito.length === 0 ? (
             <p>Carrito vaci</p>
           ) : (
@@ -71,7 +86,19 @@ const carrito = ({ carrito = [], actualizarCantidad, handleDelete }) => {
             ))
           )}
         </div>
-        <div>2</div>
+        <div className={styles.resumen}>
+          <h3>Resumen del perdido</h3>
+          {total > 0 ? (
+            <>
+              <p>Resumen del pedido</p>
+              <p>Total a pagar: {formatCantidadToMoneda(total)}</p>
+            </>
+          ) : (
+            <>
+              <p>No hay productos en el carrito</p>
+            </>
+          )}
+        </div>
       </main>
     </Layout>
   );
