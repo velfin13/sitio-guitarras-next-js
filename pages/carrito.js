@@ -32,7 +32,7 @@ const carrito = ({ carrito = [] }) => {
                   <p className={styles.precio}>
                     <span>{formatCantidadToMoneda(producto.price)}</span>
                   </p>
-                  <p className={styles.subtototal}>
+                  <p className={styles.subtotal}>
                     Subtotal:{" "}
                     <span>
                       {formatCantidadToMoneda(
