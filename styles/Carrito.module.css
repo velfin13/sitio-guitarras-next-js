@@ -20,6 +20,7 @@
   align-items: center;
   border-bottom: 1px solid #cfcfcf;
   padding: 3rem 0;
+  position: relative;
 }
 
 .producto:last-of-type {
@@ -35,17 +36,49 @@
   font-size: 2.2rem;
 }
 
-.precio{
-    font-weight: 700;
-    color: var(--primary);
-}
-.precio span{
-    font-size: 2.4rem;
-}
-.subtotal{
-    font-weight: 700;
+.cantidad {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
-.subtotal span{
-    font-size: 2.4rem;
+.cantidad p {
+  margin: 0;
+}
+
+.select {
+  all: unset;
+  padding: 1rem;
+  border: 1px solid #cfcfcf;
+  flex: 1;
+  text-align: center;
+  border-radius: 1rem;
+}
+
+.precio {
+  font-weight: 700;
+  color: var(--primary);
+}
+.precio span {
+  font-size: 2.4rem;
+}
+.subtotal {
+  font-weight: 700;
+}
+
+.subtotal span {
+  font-size: 2.4rem;
+}
+
+.eliminar {
+  all: unset;
+  position: absolute;
+  top: 3rem;
+  right: 1rem;
+  font-weight: bold;
+}
+
+.eliminar:hover {
+  cursor: pointer;
 }

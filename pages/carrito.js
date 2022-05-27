@@ -3,7 +3,7 @@ import Image from "next/image";
 import styles from "../styles/Carrito.module.css";
 import { formatCantidadToMoneda } from "../helpers";
 
-const carrito = ({ carrito = [] }) => {
+const carrito = ({ carrito = [], actualizarCantidad, handleDelete }) => {
   return (
     <Layout titlePage="carrito de compras">
       <h1 className="heading">Carrito</h1>
@@ -26,9 +26,28 @@ const carrito = ({ carrito = [] }) => {
                 </div>
                 <div>
                   <p className={styles.nombre}>{producto.name}</p>
-                  <p className={styles.cantidad}>
-                    Cantidad: {producto.cantidad}
-                  </p>
+                  <div className={styles.cantidad}>
+                    <p>Cantidad:</p>
+                    <select
+                      className={styles.select}
+                      value={producto.cantidad}
+                      onChange={(e) =>
+                        actualizarCantidad({
+                          cantidad: e.target.value,
+                          id: producto.id,
+                        })
+                      }
+                    >
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                    </select>
+                  </div>
                   <p className={styles.precio}>
                     <span>{formatCantidadToMoneda(producto.price)}</span>
                   </p>
@@ -41,6 +60,13 @@ const carrito = ({ carrito = [] }) => {
                     </span>
                   </p>
                 </div>
+                <button
+                  type="button"
+                  className={styles.eliminar}
+                  onClick={() => handleDelete(producto.id)}
+                >
+                  X
+                </button>
               </div>
             ))
           )}

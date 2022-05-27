@@ -28,7 +28,30 @@ function MyApp({ Component, pageProps }) {
     }
   };
 
-  return <Component {...pageProps} carrito={carrito} addCarrito={addCarrito} />;
+  const actualizarCantidad = (producto) => {
+    const carritoActualizado = carrito.map((articulo) => {
+      if (articulo.id === producto.id) {
+        articulo.cantidad = producto.cantidad;
+      }
+      return articulo;
+    });
+    setCarrito(carritoActualizado);
+  };
+
+  const handleDelete = (id) => {
+    const carritoActualizado = carrito.filter((articulo) => articulo.id !== id);
+    setCarrito(carritoActualizado);
+  };
+
+  return (
+    <Component
+      {...pageProps}
+      carrito={carrito}
+      addCarrito={addCarrito}
+      actualizarCantidad={actualizarCantidad}
+      handleDelete={handleDelete}
+    />
+  );
 }
 
 export default MyApp;
